@@ -11,7 +11,15 @@
     <img src="/static/logo.jpg" alt="Logo image">
 
     <p>
-        {{message}}
+        <ul>
+            {% for card in cards %}
+                <li>
+                    <a href="{{url_for('card_view', index=loop.index0)}}">
+                        {{card.question}}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
     </p>
 </body>
 </html>

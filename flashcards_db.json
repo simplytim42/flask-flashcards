@@ -1,0 +1,10 @@
+[
+    {
+        "question": "Flask's Templating Language?",
+        "answer": "Jinja"
+    },
+    {
+        "question": "Python's package manager?",
+        "answer": "pip"
+    }
+]
