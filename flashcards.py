@@ -21,10 +21,28 @@ def add_card():
             "answer": request.form['answer']
         }
         db.append(card)
-        save_db
+        save_db()
         return redirect(url_for('card_view', index=len(db)-1))
     else:
         return render_template('add_card.html')
+
+
+@app.route('/remove_card/<int:index>', methods=['GET', 'POST'])
+def remove_card(index):
+    try:
+        if request.method == 'POST':
+            del db[index]
+            save_db()
+            return redirect(url_for('welcome'))
+        else:
+            card = db[index]
+            return render_template(
+                'remove_card.html',
+                index=index,
+                card=card
+                )
+    except IndexError:
+        abort(404)
 
 
 @app.route('/card/<int:index>')
