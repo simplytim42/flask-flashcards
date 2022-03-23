@@ -4,12 +4,14 @@ from model import db
 
 app = Flask(__name__)
 
+
 @app.route('/')
 def welcome():
     return render_template(
         'welcome.html',
         cards = db
         )
+
 
 @app.route('/card/<int:index>')
 def card_view(index):
@@ -24,9 +26,11 @@ def card_view(index):
     except IndexError:
         abort(404)
 
+
 @app.route('/api/card')
 def api_card_list():
     return jsonify(db)
+
 
 @app.route('/api/card/<int:index>')
 def api_card_details(index):
