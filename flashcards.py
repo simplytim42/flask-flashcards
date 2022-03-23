@@ -1,6 +1,6 @@
-from flask import Flask, jsonify, render_template, abort
+from flask import Flask, jsonify, redirect, render_template, abort, request, url_for
 
-from model import db
+from model import db, save_db
 
 app = Flask(__name__)
 
@@ -11,6 +11,20 @@ def welcome():
         'welcome.html',
         cards = db
         )
+
+
+@app.route('/add_card/', methods=["GET", "POST"])
+def add_card():
+    if request.method == 'POST':
+        card = {
+            "question": request.form['question'],
+            "answer": request.form['answer']
+        }
+        db.append(card)
+        save_db
+        return redirect(url_for('card_view', index=len(db)-1))
+    else:
+        return render_template('add_card.html')
 
 
 @app.route('/card/<int:index>')
