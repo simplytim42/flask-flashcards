@@ -11,6 +11,10 @@
     <img src="/static/logo.jpeg" alt="Logo image">
 
     <p>
+        <a href="{{ url_for('add_card') }}">Add New Card</a>
+    </p>
+
+    <p>
         <ul>
             {% for card in cards %}
                 <li>
