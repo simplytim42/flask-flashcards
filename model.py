@@ -1,11 +1,13 @@
 # Simulation Database
 
+from genericpath import exists
 import json
 from pathlib import Path
 
 def create_db_if_not_exists():
-    with open('./flashcards_db.json', 'w+') as f:
-        f.write('[]')
+    if not exists('./flashcards_db.json'):
+        with open('./flashcards_db.json', 'w+') as f:
+            f.write('[]')
 
 
 def load_db():
