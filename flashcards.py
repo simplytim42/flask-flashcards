@@ -38,7 +38,6 @@ def remove_card(index):
             card = db[index]
             return render_template(
                 'remove_card.html',
-                index=index,
                 card=card
                 )
     except IndexError:
