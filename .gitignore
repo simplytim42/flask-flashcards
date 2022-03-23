@@ -1,3 +1,6 @@
+#python dev files
 /__pycache__
 /env
-/static
+
+#temp database
+flashcards_db.json
